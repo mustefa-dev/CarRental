@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Report</title>
+    <!-- Use a more modern version of Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha384-+0l2e6jG1Ujz9X5o9g0n6Iyo1Q7VvsusIEbUmfrfdrpYYlJA+sqb/KRJL7fK67sw" crossorigin="anonymous">
+    <!-- Add custom CSS for further styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            background-color: #dc3545; /* Red background color for header */
+            color: #fff;
+            padding: 1rem 0;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        .header-left, .header-right {
+            text-align: left;
+        }
+        .logo {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto; /* Center the logo */
+        }
+        .header-text {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
+        }
+        /* Enhancements */
+        .card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+        }
+        .card-title {
+            color: #343a40;
+        }
+        .card-subtitle {
+            color: #6c757d;
+        }
+        .card-text strong {
+            color: #343a40;
+        }
+        .table {
+            margin-bottom: 0; /* Remove default bottom margin */
+            font-size: 1rem; /* Increase font size for better readability */
+        }
+        .table th,
+        .table td {
+            border: 1px solid #dee2e6; /* Add borders to table cells */
+            padding: 0.75rem; /* Add padding to table cells */
+            text-align: center; /* Center align text */
+        }
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2; /* Alternate row colors */
+        }
+        /* Sticky table header */
+        .table thead th {
+            position: sticky;
+            top: 0;
+            background-color: #fff; /* Background color for sticky header */
+            z-index: 1; /* Ensure the header stays above other content */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <p class="header-text mb-0">Quay 6</p>
+                    <p class="header-text mb-0">+1234567890</p>
+                </div>
+                <div>
+                    <img src="https://www.pngitem.com/images/logo.png" alt="CarReport Logo" class="logo">
+                </div>
+                <div class="header-right">
+                    <p class="header-text mb-0">Report Date: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+                    <!-- Assuming you have a Report ID -->
+                    <p class="header-text mb-0">Report ID: CR-123456</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mb-4">Car Inventory</h2>
+                <div class="table-responsive"> <!-- Make table responsive -->
+                    <table class="table table-bordered">
+                        <thead> <!-- Table header -->
+                            <tr>
+                                <th>Car Name</th>
+                                <th>Car Model</th>
+                                <th>Color</th>
+                                <th>Plate Number</th>
+                                <th>Description</th>
+                                <th>Availability</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var car in Model) {
+                                <tr>
+                                    <td>@car.Name</td>
+                                    <td>@car.Model</td>
+                                    <td>@car.Color</td>
+                                    <td>@car.PlateNumber</td>
+                                    <td>@car.Description</td>
+                                    <td><span class="text-success">@((car.IsAvailable) ? "Available" : "Not Available")</span></td>
+                                    <td>@car.Price</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- You can add another column here if needed -->
+            </div>
+        </div>
+        <!-- End of Content Section -->
+
+    </div>
+</body>
+</html>
